@@ -181,6 +181,7 @@ robot = DriveBase(left_motor, right_motor, wheel_diameter=56, axle_track=114)
 ```
 
 Great! Now we have an _instance_ of the `DriveBase` class called `robot`.
+
 #### `DriveBase` Methods
 Now that we have constructed our robot, we want to send it commands. The instructions we can give to an instance of a class are called _methods_. For example, the `DriveBase` class has the following methods:
 - `robot.straight(distance)`: Drives the robot in a straight line for a given `distance` in millimeters. A negative value drives backward.
@@ -190,6 +191,7 @@ Now that we have constructed our robot, we want to send it commands. The instruc
 ### Lesson 3.4: Navigational Challenges
 
 > Key Concept: when we want to repeat a piece of code over and over, we use a _loop_. A common example of a loop in Python is a `for` loop. We will use a `for` loop below to drive in specific patterns.
+
 #### Challenge 1: Drive a Square
 
 Use a for loop to repeat the actions of driving straight and turning 90 degrees.
