@@ -120,7 +120,7 @@ from pybricks.tools import wait
 left_motor = Motor(Port.A, positive_direction=Direction.COUNTERCLOCKWISE)
 
 # Initialize the right motor, connected to Port B.
-right_motor = Motor(Port.B)
+right_motor = Motor(Port.B, positive_direction=Direction.CLOCKWISE)
 ```
 
 #### Fundamental Motor Commands:
