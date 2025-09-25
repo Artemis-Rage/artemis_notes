@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Introduction to Classes in Python | Artemis Notes</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Introduction to Classes in Python" />
+<meta name="author" content="by Artemis Rage" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="It’s not rocket surgery 🚀👩🏻‍⚕️" />
+<meta property="og:description" content="It’s not rocket surgery 🚀👩🏻‍⚕️" />
+<link rel="canonical" href="http://localhost:4000/notes/classes/" />
+<meta property="og:url" content="http://localhost:4000/notes/classes/" />
+<meta property="og:site_name" content="Artemis Notes" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introduction to Classes in Python" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"by Artemis Rage"},"description":"It’s not rocket surgery 🚀👩🏻‍⚕️","headline":"Introduction to Classes in Python","url":"http://localhost:4000/notes/classes/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Artemis Notes" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Artemis Notes</a>
+  </div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Introduction to Classes in Python</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="what-is-a-class">What is a Class?</h2>
+
+<p>Think of a <strong>class</strong> as a blueprint or a template for creating things. For example, you could have a blueprint for a car. The blueprint itself isn’t a car, but it describes what a car is: it has wheels, an engine, a color, and it can do things like <code class="language-plaintext highlighter-rouge">drive()</code> or <code class="language-plaintext highlighter-rouge">honk()</code>.</p>
+
+<p>In programming, a class is a blueprint for creating <strong>objects</strong>. An object is a specific instance of a class. So, if <code class="language-plaintext highlighter-rouge">Car</code> is our class (the blueprint), a red Ferrari and a blue Mini Cooper would be two different objects created from that class.</p>
+
+<h3 id="creating-our-first-class-animal">Creating Our First Class: <code class="language-plaintext highlighter-rouge">Animal</code></h3>
+
+<p>Let’s create a simple blueprint for an animal. Our <code class="language-plaintext highlighter-rouge">Animal</code> class will define what all animals have in common.</p>
+
+<p>In Python, we use the <code class="language-plaintext highlighter-rouge">class</code> keyword. We’ll also create a special function called <code class="language-plaintext highlighter-rouge">__init__</code>. This function is the “initializer” (or “constructor”) that runs whenever we create a new object from the class. It’s where we set up the object’s initial properties (called <strong>attributes</strong>).</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Animal</span><span class="p">:</span>
+    <span class="c1"># This is the initializer method
+</span>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">species</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Creating a new animal named </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s">!"</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
+
+    <span class="c1"># This is a regular method (a function inside a class)
+</span>    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"?!?"</span><span class="p">)</span>
+
+<span class="c1"># --- Let's use our blueprint! ---
+</span>
+<span class="c1"># Create an object (an instance) of the Animal class
+</span><span class="n">lion</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s">"Leo"</span><span class="p">,</span> <span class="s">"Lion"</span><span class="p">)</span>
+<span class="n">elephant</span> <span class="o">=</span> <span class="n">Animal</span><span class="p">(</span><span class="s">"Dumbo"</span><span class="p">,</span> <span class="s">"Elephant"</span><span class="p">)</span>
+
+<span class="c1"># Access the attributes of our objects
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">lion</span><span class="p">.</span><span class="n">name</span><span class="si">}</span><span class="s"> is a </span><span class="si">{</span><span class="n">lion</span><span class="p">.</span><span class="n">species</span><span class="si">}</span><span class="s">."</span><span class="p">)</span>         <span class="c1"># Output: Leo is a Lion.
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">elephant</span><span class="p">.</span><span class="n">name</span><span class="si">}</span><span class="s"> is a </span><span class="si">{</span><span class="n">elephant</span><span class="p">.</span><span class="n">species</span><span class="si">}</span><span class="s">."</span><span class="p">)</span> <span class="c1"># Output: Dumbo is an Elephant.
+</span>
+<span class="c1"># Call the methods of our objects
+</span><span class="n">lion</span><span class="p">.</span><span class="n">make_sound</span><span class="p">()</span>       <span class="c1"># Output: ?!?
+</span><span class="n">elephant</span><span class="p">.</span><span class="n">make_sound</span><span class="p">()</span>   <span class="c1"># Output: ?!?
+</span></code></pre></div></div>
+
+<h2 id="what-are-subclasses-inheritance">What are Subclasses? (Inheritance)</h2>
+
+<p>Now, what if we want to create more specific types of animals, like a <code class="language-plaintext highlighter-rouge">Dog</code> or a <code class="language-plaintext highlighter-rouge">Cat</code>? A dog is an animal, but it also has its own unique behaviors, like barking.</p>
+
+<p>This is where <strong>inheritance</strong> comes in. We can create a new class (a <strong>subclass</strong> or <strong>child class</strong>) that <em>inherits</em> all the attributes and methods from an existing class (the <strong>superclass</strong> or <strong>parent class</strong>). This allows us to reuse code and build upon existing blueprints.</p>
+
+<h3 id="creating-subclasses-dog-and-cat">Creating Subclasses: <code class="language-plaintext highlighter-rouge">Dog</code> and <code class="language-plaintext highlighter-rouge">Cat</code></h3>
+
+<p>Let’s make a <code class="language-plaintext highlighter-rouge">Dog</code> class that inherits from <code class="language-plaintext highlighter-rouge">Animal</code>. It will automatically get the <code class="language-plaintext highlighter-rouge">__init__</code> method and the <code class="language-plaintext highlighter-rouge">name</code> and <code class="language-plaintext highlighter-rouge">species</code> attributes. We can also give it a more specific <code class="language-plaintext highlighter-rouge">make_sound</code> method. This is called <strong>method overriding</strong>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The Animal class is our parent class
+</span><span class="k">class</span> <span class="nc">Animal</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">species</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="p">.</span><span class="n">species</span> <span class="o">=</span> <span class="n">species</span>
+
+    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Some generic animal sound"</span><span class="p">)</span>
+
+<span class="c1"># The Dog class is a subclass of Animal
+# We show this by putting Animal in parentheses: class Dog(Animal):
+</span><span class="k">class</span> <span class="nc">Dog</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="c1"># We are overriding the parent's make_sound method
+</span>    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Woof!"</span><span class="p">)</span>
+        
+    <span class="c1"># We can also add methods that only Dogs have
+</span>    <span class="k">def</span> <span class="nf">wag_tail</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="bp">self</span><span class="p">.</span><span class="n">name</span><span class="si">}</span><span class="s"> wags its tail happily."</span><span class="p">)</span>
+
+<span class="c1"># The Cat class is another subclass of Animal
+</span><span class="k">class</span> <span class="nc">Cat</span><span class="p">(</span><span class="n">Animal</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="c1"># We can also customize the __init__ method.
+</span>        <span class="c1"># super().__init__() calls the parent class's __init__ method.
+</span>        <span class="c1"># We'll set the species to "Cat" automatically.
+</span>        <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">"Cat"</span><span class="p">)</span>
+
+    <span class="c1"># Override the make_sound method for cats
+</span>    <span class="k">def</span> <span class="nf">make_sound</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">"Meow!"</span><span class="p">)</span>
+
+<span class="c1"># --- Let's create objects from our subclasses! ---
+</span>
+<span class="c1"># my_dog is an instance of the Dog class
+</span><span class="n">my_dog</span> <span class="o">=</span> <span class="n">Dog</span><span class="p">(</span><span class="s">"Buddy"</span><span class="p">,</span> <span class="s">"Golden Retriever"</span><span class="p">)</span>
+
+<span class="c1"># my_cat is an instance of the Cat class
+</span><span class="n">my_cat</span> <span class="o">=</span> <span class="n">Cat</span><span class="p">(</span><span class="s">"Whiskers"</span><span class="p">)</span>
+
+
+<span class="c1"># Access attributes (inherited from Animal)
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">my_dog</span><span class="p">.</span><span class="n">name</span><span class="si">}</span><span class="s"> is a </span><span class="si">{</span><span class="n">my_dog</span><span class="p">.</span><span class="n">species</span><span class="si">}</span><span class="s">."</span><span class="p">)</span>   <span class="c1"># Output: Buddy is a Golden Retriever.
+</span><span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">my_cat</span><span class="p">.</span><span class="n">name</span><span class="si">}</span><span class="s"> is a </span><span class="si">{</span><span class="n">my_cat</span><span class="p">.</span><span class="n">species</span><span class="si">}</span><span class="s">."</span><span class="p">)</span>   <span class="c1"># Output: Whiskers is a Cat.
+</span>
+<span class="c1"># Call the overridden methods
+</span><span class="n">my_dog</span><span class="p">.</span><span class="n">make_sound</span><span class="p">()</span>   <span class="c1"># Output: Woof!
+</span><span class="n">my_cat</span><span class="p">.</span><span class="n">make_sound</span><span class="p">()</span>   <span class="c1"># Output: Meow!
+</span>
+<span class="c1"># Call a method unique to the Dog class
+</span><span class="n">my_dog</span><span class="p">.</span><span class="n">wag_tail</span><span class="p">()</span>     <span class="c1"># Output: Buddy wags its tail happily.
+</span></code></pre></div></div>
+
+<h3 id="summary">Summary</h3>
+
+<ul>
+  <li><strong>Class</strong>: A blueprint for creating objects.</li>
+  <li><strong>Object</strong>: An instance of a class, with its own attributes and methods.</li>
+  <li><strong>Inheritance</strong>: The process where a new class (subclass) takes on the attributes and methods of an existing class (superclass).</li>
+  <li><strong>Method Overriding</strong>: When a subclass provides its own specific implementation of a method that is already defined in its parent class.</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Artemis Notes</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">by Artemis Rage</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>It&#39;s not rocket surgery 🚀👩🏻‍⚕️</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

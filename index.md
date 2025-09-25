@@ -1,8 +1,6 @@
 ---
 layout: home
 ---
-
-
-- [Getting Started with Pybricks](./notes/getting_started.html)
-- [Introduction to Classes in Python](./notes/intro_to_classes.html)
-- [ArtemisBase: a DriveBase that Knows Where It Is](./notes/artemis_base.html)
+- [Getting Started with Pybricks](./notes/getting_started/)
+- [Introduction to Classes in Python](./notes/classes/)
+- [ArtemisBase: a DriveBase that Knows Where It Is](./notes/all_your_base/)

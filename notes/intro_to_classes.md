@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "Introduction to Classes in Python"
+permalink: /notes/classes/
 ---
 ## What is a Class?
 

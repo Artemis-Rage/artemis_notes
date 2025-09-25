@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ArtemisBase: a DriveBase that Knows Where It Is | Artemis Notes</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="ArtemisBase: a DriveBase that Knows Where It Is" />
+<meta name="author" content="by Artemis Rage" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="It’s not rocket surgery 🚀👩🏻‍⚕️" />
+<meta property="og:description" content="It’s not rocket surgery 🚀👩🏻‍⚕️" />
+<link rel="canonical" href="http://localhost:4000/notes/all_your_base/" />
+<meta property="og:url" content="http://localhost:4000/notes/all_your_base/" />
+<meta property="og:site_name" content="Artemis Notes" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ArtemisBase: a DriveBase that Knows Where It Is" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"by Artemis Rage"},"description":"It’s not rocket surgery 🚀👩🏻‍⚕️","headline":"ArtemisBase: a DriveBase that Knows Where It Is","url":"http://localhost:4000/notes/all_your_base/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Artemis Notes" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Artemis Notes</a>
+  </div>
+</header><main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">ArtemisBase: a DriveBase that Knows Where It Is</h1>
+  </header>
+
+  <div class="post-content">
+    <p>To make it easier to plan and edit routes for our robot, we would like to be able to give it directions of the form “drive to <code class="language-plaintext highlighter-rouge">(x, y)</code>” instead of “turn to heading <code class="language-plaintext highlighter-rouge">h</code> and then go distance <code class="language-plaintext highlighter-rouge">d</code>.”
+The <code class="language-plaintext highlighter-rouge">DriveBase</code> class doesn’t know how to do this; it only has methods like <code class="language-plaintext highlighter-rouge">turn</code> and <code class="language-plaintext highlighter-rouge">straight</code>.</p>
+
+<blockquote>
+  <p>Question: why is it easier to plan and edit routes using coordinates?</p>
+</blockquote>
+
+<p>In order to work in “coordinate space”, our robot has to do two things:</p>
+
+<ol>
+  <li>Keep track of its current location <code class="language-plaintext highlighter-rouge">(x, y)</code>.</li>
+  <li>Given a current location <code class="language-plaintext highlighter-rouge">(x0, y0)</code> and a target location <code class="language-plaintext highlighter-rouge">(x1, y1)</code>, figure out how much to turn and how far to drive.</li>
+</ol>
+
+<p>We will create our own subclass of the <code class="language-plaintext highlighter-rouge">DriveBase</code> class that enables these features. Below is a template that you can use to work on our new DriveBase class:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">def</span> <span class="nf">compute_trajectory</span><span class="p">(</span>
+  <span class="n">x0</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+  <span class="n">y0</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+  <span class="n">x1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+  <span class="n">y1</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]:</span>
+  <span class="s">"""Given a current position and target position, compute the heading and distance.
+
+    Args:
+      x0: initial x position.
+      y0: initial y position.
+      x1: target x position.
+      y1: target y position.
+
+  Returns: a pair of values (h, d) representing the heading and distance to drive to go from
+    (x0, y0) to (x1, y1).
+  """</span>
+
+  <span class="c1"># IMPLEMENT THIS FUNCTION
+</span>
+
+<span class="k">class</span> <span class="nc">ArtemisBase</span><span class="p">(</span><span class="n">DriveBase</span><span class="p">):</span>
+
+  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="c1"># *args and **kwargs are just a way of saying "collect all the inputs to this constructor".
+</span>    <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+  <span class="p">):</span>
+    <span class="c1"># super() just means "get my parent class". So this line just says
+</span>    <span class="c1"># "take all the arguments to my constructor and pass them to the constructor for my parent class."
+</span>    <span class="nb">super</span><span class="p">().</span><span class="n">__init__</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># We assume our start location is (0, 0).
+</span>    <span class="bp">self</span><span class="p">.</span><span class="n">reset_location</span><span class="p">()</span>
+
+  <span class="k">def</span> <span class="nf">reset_location</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="p">):</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="bp">self</span><span class="p">.</span><span class="n">y</span> <span class="o">=</span> <span class="mi">0</span>
+
+  <span class="k">def</span> <span class="nf">turn_to</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">heading</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+  <span class="p">):</span>
+  <span class="s">"""Turns the robot to face in the direction `heading`."""</span>
+
+    <span class="c1"># IMPLEMENT THIS FUNCTION
+</span>
+  <span class="k">def</span> <span class="nf">drive_to</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+    <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span>
+  <span class="p">):</span>
+  <span class="s">"""Drives from the current location to (x, y)."""</span>
+
+  <span class="c1"># IMPLEMENT THIS FUNCTION
+</span>
+</code></pre></div></div>
+
+<h2 id="questions">Questions</h2>
+<ol>
+  <li>What happens if someone calls <code class="language-plaintext highlighter-rouge">.arc(...)</code> on an instance of <code class="language-plaintext highlighter-rouge">ArtemisBase</code>? What can we do about this?</li>
+  <li>How can we test that our code is correct?</li>
+</ol>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Artemis Notes</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">by Artemis Rage</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>It&#39;s not rocket surgery 🚀👩🏻‍⚕️</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
