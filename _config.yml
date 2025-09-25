@@ -1,4 +1,7 @@
 title: Artemis Notes
 author: Artemis Rage
 description: It's not rocket surgery 🚀👩🏻‍⚕️
-theme: mimima
+
+plugins:
+  - jekyll-remote-theme
+remote_theme: jekyll/minima
