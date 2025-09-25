@@ -1,3 +1,6 @@
+---
+layout: home
+---
 These instructions are tailored specifically for using a LEGO Spike Prime with a ChromeBook.
 
 ### 1.1 The PyBricks Firmware Installation: A Detailed Walkthrough
