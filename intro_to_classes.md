@@ -1,3 +1,6 @@
+---
+layout: home
+---
 ## What is a Class?
 
 Think of a **class** as a blueprint or a template for creating things. For example, you could have a blueprint for a car. The blueprint itself isn't a car, but it describes what a car is: it has wheels, an engine, a color, and it can do things like `drive()` or `honk()`.
