@@ -1,5 +1,6 @@
 ---
-layout: home
+layout: page
+title: "Getting Started with PyBricks"
 ---
 These instructions are tailored specifically for using a LEGO Spike Prime with a ChromeBook.
 

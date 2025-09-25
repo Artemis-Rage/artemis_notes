@@ -1,6 +1,8 @@
 ---
-layout: post
+layout: page
+title: "ArtemisBase: a DriveBase that Knows Where It Is"
 ---
+
 To make it easier to plan and edit routes for our robot, we would like to be able to give it directions of the form "drive to `(x, y)`" instead of "turn to heading `h` and then go distance `d`."
 The `DriveBase` class doesn't know how to do this; it only has methods like `turn` and `straight`.
 

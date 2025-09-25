@@ -1,5 +1,6 @@
 ---
-layout: home
+layout: page
+title: "Introduction to Classes in Python"
 ---
 ## What is a Class?
 
