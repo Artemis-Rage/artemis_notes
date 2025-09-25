@@ -5,3 +5,5 @@ description: It's not rocket surgery 🚀👩🏻‍⚕️
 plugins:
   - jekyll-remote-theme
 remote_theme: jekyll/minima
+
+header_pages: []
