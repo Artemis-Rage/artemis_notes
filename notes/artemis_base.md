@@ -55,11 +55,12 @@ class ArtemisBase(DriveBase):
     self.reset_location()
 
   def reset_location(
+    self,
     x: float = 0,
     y: float = 0,
   ):
-    self.x = 0
-    self.y = 0
+    self.x = x
+    self.y = y
 
   def turn_to(
     self,
