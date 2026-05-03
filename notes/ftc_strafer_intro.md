@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Meet the Robot: A Guide to the FTC Strafer Drive Base"
+title: "An Intro to the FTC Strafer Drive Base"
 permalink: /notes/ftc_strafer_intro/
 ---
 
@@ -14,7 +14,16 @@ These notes walk you through the FTC robot you're about to work on. By the end, 
 
 Read along and try the things in **bold** as you come to them. If something doesn't match what you see on the actual robot, stop and ask — the robot in front of you is always the source of truth.
 
-> **About the battery.** The robot's battery puts out **12 volts**. That's not enough to hurt you, but it *can* fry the electronics if you plug it in backwards. Until you reach the "Hub Setup" section, the battery should stay **disconnected**.
+## Safety
+
+These notes assume you're in a supervised lab — still, a handful of habits keep people and boards out of trouble:
+
+1. **Keep the battery unplugged until "Hub Setup."** The pack is **12 volts** — not enough to cause a serious shock, but **<span style="color:#b91c1c;">reverse polarity</span>** (power wired the wrong way) *can* <span style="color:#b91c1c;">damage the Control Hub</span>. Leave the XT30 **<span style="color:#b45309;">disconnected</span>** until that section explicitly says to connect it.
+2. **Match red and black every time.** Before you mate power, confirm **<span style="color:#dc2626;">red</span> to <span style="color:#dc2626;">red</span>** and **<span style="color:#1c1917;">black</span> to <span style="color:#1c1917;">black</span>.** The XT30 shape helps, but it is still possible to force a mistake — don't rush the check.
+3. **<span style="color:#b45309;">Stay clear of pinch points and wheels</span>** when the robot might move. That means gears, shafts, belts, and mecanum rollers — and **long hair or loose sleeves** tied back or clear before you run an OpMode.
+4. **Watch your fingers and toes.** FTC robots run on **much bigger motors** and **heavier drivetrains** than typical **FLL** bots. A stray hand near a spinning wheel — or a foot in the path when something drives sideways — **<span style="color:#b91c1c;">can bruise or crush</span>** badly enough to need attention. Assume the robot **<span style="color:#b91c1c;">can hurt you</span>**, not just the hardware.
+5. **Turn power on only when everyone knows it's coming.** When you do reach Hub Setup, one person should **call it out** (this doc uses a **<span style="color:#0369a1;">battery captain</span>**) so nobody's fingers are in the drivetrain and no one is surprised by motion or noise.
+6. **If something seems wrong, stop first.** <span style="color:#b45309;">Burning smell, smoke, crackling, or very hot connectors</span> → **<span style="color:#b91c1c;">main switch OFF</span>**, **<span style="color:#b91c1c;">unplug the battery</span>**, and get a mentor before trying again.
 
 ---
 
@@ -149,11 +158,11 @@ The orange lines show the angle of the rollers on each wheel. Notice that the ro
 | All four wheels spin… | Robot moves… |
 |---|---|
 | forward (top of wheel goes away from you) | **forward** |
-| backward | backward |
+| backward | **backward** |
 | FL & BR forward, FR & BL backward | **strafe right** |
 | FL & BR backward, FR & BL forward | **strafe left** |
 | Right side forward, left side backward | **rotate right (CW)** |
-| Right side backward, left side forward | rotate left (CCW) |
+| Right side backward, left side forward | **rotate left (CCW)** |
 
 **Try this:** Read each row out loud, then **push the robot by hand** to test it. (Battery still disconnected!) Pretend each wheel is spinning the way the row says, and predict which way the robot would go. Then try the next row.
 
@@ -165,7 +174,7 @@ Before anyone touches the power switch, you and a partner are going to verify th
 
 ### The Control Hub port map
 
-<svg viewBox="0 0 740 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of REV Control Hub port locations: motors 0-3, servos 0-5, USB, sensor ports, and XT30 power">
+<svg viewBox="0 0 740 318" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of REV Control Hub port locations: motors 0-3, servos 0-5, USB, sensor ports, and XT30 power" style="display:block;margin-top:0.5rem;max-width:100%;height:auto">
   <style>
     .hub { fill: #111; stroke: #444; stroke-width: 2; }
     .port { fill: #1f2937; stroke: #6b7280; stroke-width: 1; }
@@ -211,7 +220,7 @@ Before anyone touches the power switch, you and a partner are going to verify th
   <text class="group" x="450" y="165">POWER (XT30)</text>
   <rect class="pwr" x="450" y="175" width="100" height="32" rx="3"/><text class="lbl" x="500" y="196" text-anchor="middle">XT30 IN ⚡</text>
   <rect class="pwr" x="558" y="175" width="100" height="32" rx="3"/><text class="lbl" x="608" y="196" text-anchor="middle">XT30 OUT</text>
-  <text class="lbl-out" x="80" y="262">D = digital (4 ports, 8 channels) · A = analog (2 ports, 4 channels) · ⚠ male XT30 = battery in</text>
+  <text class="lbl-out" x="80" y="291">D = digital (4 ports, 8 channels) · A = analog (2 ports, 4 channels) · ⚠ male XT30 = battery in</text>
 </svg>
 
 The actual Control Hub may have its ports arranged a little differently than the diagram above — what matters is the **labels** on the connectors. Find each labeled port on the real hub.
